@@ -1,6 +1,6 @@
 <?php
 //get data from form  
-
+error_reporting(0);
 $name = $_POST['name'];
 $email= $_POST['email'];
 $subject= $_POST['subject'];
