@@ -1,3 +1,36 @@
+<?php
+if(isset($_POST['Name'])){
+    $server = "localhost";
+$username = "root";
+$password = "";
+
+$con = mysqli_connect($server, $username, $password);
+
+if(!$con){
+    die("Connection to this database failed due to". mysqli_connect_error());
+}
+$name = $_POST['MyName'];
+$email = $_POST['MyEmail'];
+$mobNo = $_POST['MobileNumber'];
+$class = $_POST['Myclass'];
+$hobby = $_POST['myHobby'];
+$gender = $_POST['MyGender'];
+$about = $_POST['MyText'];
+
+$sql = "INSERT INTO `music website data`.`joining form` (`Name`, `E-Mail`, `Mobile Number`, `Class`, `Hobbies/Interests`, `Gender`, `About You`) VALUES ($name, $email, $mobNo,  $class, $hobby, $gender, $about)";
+echo $sql;
+if($con->query($sql) == true){
+    echo "SuccessFully Inserted";
+}
+else{
+    echo "ERROR: $sql <br> $con->error";
+}
+ $con->close();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +78,7 @@
     <main>
        <div class="container">
         <h1>Fill This Form To Join The Club</h1>
-        <form action="Join Us.php" method="POST"> 
+        <form action="Join Us.php"> 
             <div>
                 Name : <input type="text" name=" MyName" required placeholder="Name">  
             </div>
